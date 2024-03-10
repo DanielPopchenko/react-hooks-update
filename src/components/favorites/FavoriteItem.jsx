@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Card from '../UI/Card';
+import Card from '../ui/Card';
 import './FavoriteItem.css';
 
-const FavoriteItem = props => {
+const FavoriteItem = (props) => {
   return (
     <Card style={{ marginBottom: '1rem' }}>
       <div className="favorite-item">

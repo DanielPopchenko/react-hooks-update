@@ -1,20 +1,23 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import Navigation from './components/nav/Navigation';
+import { createBrowserRouter, RouterProvider, Route, Link } from 'react-router-dom';
+import RootLayout from './components/ui/RootLayout';
+import Products from './containers/Products';
+import Favorites from './containers/Favorites';
 
-import Navigation from './components/Nav/Navigation';
-import ProductsPage from './containers/Products';
-import FavoritesPage from './containers/Favorites';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { path: '/', element: <Products /> },
+      { path: '/favorites', element: <Favorites /> },
+    ],
+  },
+]);
 
-const App = props => {
-  return (
-    <React.Fragment>
-      <Navigation />
-      <main>
-        <Route path="/" component={ProductsPage} exact />
-        <Route path="/favorites" component={FavoritesPage} />
-      </main>
-    </React.Fragment>
-  );
+const App = (props) => {
+  return <RouterProvider router={router}></RouterProvider>;
 };
 
 export default App;
