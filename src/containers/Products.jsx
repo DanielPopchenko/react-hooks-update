@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
+import { ProductsContext } from '../context/products-context';
 
 import ProductItem from '../components/products/ProductItem';
 import './Products.css';
 
 const Products = (props) => {
-  const productList = useSelector((state) => state.shop.products);
+  // ? Redux method
+  // ! useSelector can be used to select a slice from a state
+  // ! in our example products
+  // const productList = useSelector((state) => state.shop.products);
+
+  // ? context method
+  const productsList = useContext(ProductsContext).products;
   return (
     <ul className="products-list">
-      {productList.map((prod) => (
+      {productsList.map((prod) => (
         <ProductItem
           key={prod.id}
           id={prod.id}
